@@ -1,9 +1,9 @@
 import re
 import time
 from urllib.parse import unquote
-from selenium import webdriver
-from django.shortcuts import render
 
+from django.shortcuts import render
+from video_tools.settings import driver
 # Create your views here.
 from django.views import View
 
@@ -22,13 +22,14 @@ class AnalyzeUrl(View):
         url = request.POST.get("weibo_video_url", "")
         if not url:
             return render(request, 'weibo/base.html', {"error": "不给我地址让我分析个啥?"})
-        # mac上
-        driver = webdriver.PhantomJS(executable_path='/Users/zhangkun/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs')
-        # 服务器上
-        # driver = webdriver.PhantomJS(executable_path='/home/zk/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
         driver.get(url)
-        time.sleep(3)
         pattern = re.compile(r'video_src=(.+?)video&amp;', re.DOTALL)  # 查找数字
+        _num_temp = 0
+        while "video_src=" not in driver.page_source:
+            time.sleep(0.5)
+            _num_temp+=1
+            if _num_temp>20:
+                return render(request, 'weibo/base.html', {"error": "解析失败,超时,请重新复制链接重试,还不行,请联系张昆帮你"})
         find_video_src = pattern.findall(driver.page_source)
         if find_video_src:
             real_video_url = find_video_src[0]
