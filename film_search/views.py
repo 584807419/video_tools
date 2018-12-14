@@ -116,5 +116,4 @@ class FilmDownload(View):
                     _temp_dict["magnet"].append(dw_url.replace("www.ysshare.com", "www.videotools.cn"))
                 if "ftp" in dw_url:
                     _temp_dict["ftp"].append(dw_url.replace("www.ysshare.com", "www.videotools.cn"))
-        print(_temp_dict)
         return render(request, 'film/dw_info.html', {"temp_dict": _temp_dict})
