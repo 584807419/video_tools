@@ -96,76 +96,21 @@
                     				</div>
 
             </nav>
-        {% if not real_url %}
-            <div class="jumbotron">
-                <h2>
-                    微博网页视频下载
-                </h2>
-                <form action="{% url 'weibo_video_web_download:analyze_url' %}" method="post" autocomplete="off">
-
-                    <div class="form-group marb20 {% if login_form.errors.username %}errorput{% endif %}">
-                        <input name="weibo_video_url" class="form-control" placeholder="网址/网页/url/链接" />
-
-                    </div>
-                <p>
-                        请复制微博视频网页url/网页地址/网址,粘贴到框内,然后点右侧的按钮          --> <input class="btn btn-primary btn-large" id="jsLoginBtn" type="submit" value="立即开始进行分析 "/>
-                    </p>
-
-                    {% csrf_token %}
-                </form>
-
-                <p>
-                </p>
-            </div>
-        {% endif %}
-        {% if real_url %}
-        <div class="jumbotron">
-            <p>
-                微博视频的源地址,可右键复制或者直接下载,也可转为迅雷专用下载地址后使用迅雷下载
-            </p>
-            <p>
-                <a href="{{ real_url }}" target="_blank">{{ real_url }}</a>
-                <input hidden="hidden" class="int" id="oldurl" name="oldurl" value="{{ real_url }}">
-            </p>
-            <p>
-                {#				 <a class="btn" href="#">View details »</a>#}
-            </p>
-
-
-        </div>
-    {% endif %}
-        </div>
-        <div class="row clearfix">
-                    <div class="col-md-8 column">
-                        <div class="jumbotron">
-                            <h2>
-                                微博网页视频下载
-                            </h2>
-                            <form action="{% url 'weibo_video_web_download:analyze_url' %}" method="post" autocomplete="off">
-
-                                <div class="form-group marb20 {% if login_form.errors.username %}errorput{% endif %}">
-                                    <input name="weibo_video_url" class="form-control" placeholder="网址/网页/url/链接" />
-
-                                </div>
-                            <p>
-                                    请复制微博视频网页url/网页地址/网址,粘贴到框内,然后点右侧的按钮          --> <input class="btn btn-primary btn-large" id="jsLoginBtn" type="submit" value="立即开始进行分析 "/>
-                                </p>
-
-                                {% csrf_token %}
-                            </form>
-
-                            <p>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 column">
-                    </div>
-        </div>
-    </div>
-
-
 
     <div class="row clearfix">
+    {% for film in film_search_res %}
+		<div class="col-md-4 column">
+			<h2>
+				Heading
+			</h2>
+			<p>
+				{{ film }}. Donec sed odio dui.{{ film.film_name }}
+			</p>
+			<p>
+				 <a class="btn" href="#">View details »</a>
+			</p>
+		</div>
+    {% endfor %}
     {% if real_url %}
             <div class="col-md-6 column">
 
