@@ -87,7 +87,7 @@ class FilmSearch(View):
                          "film_area": film_area,
                          "film_desc": film_desc,
 
-                         "film_image_url": film_image_url,
+                         "film_image_url": film_image_url.replace("https","http"),
                          "film_page_url": film_page_url,
                          }
             res.append(film_dict)
