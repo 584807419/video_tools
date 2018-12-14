@@ -16,6 +16,12 @@
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
+
+        
+
+
+
+
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -97,53 +103,70 @@
 
             </nav>
 
-    <div class="row clearfix">
-    {% for film in film_search_res %}
-		<div class="col-md-4 column">
-			<h2>
-				Heading
-			</h2>
-			<p>
-				{{ film }}. Donec sed odio dui.{{ film.film_name }}
-			</p>
-			<p>
-				 <a class="btn" href="#">View details »</a>
-			</p>
-		</div>
-    {% endfor %}
-    {% if real_url %}
-            <div class="col-md-6 column">
 
 
-                <h2>
-                    <input id="button" onclick="urlconvert();" type="button" value="转换为迅雷下载地址" name="button">
-                </h2>
 
-                <p><label for="newurl">真实地址:</label> <input class="int" id="newurl"
-                                                            onclick="if(this.value){copy(this.value);}"
-                                                            name="newurl"><span id="down_newurl"></span></p>
-                <p><label for="thunderurl">迅雷地址:</label> <input class="int" id="thunderurl"
-                                                                onclick="if(this.value){copy(this.value);}"
-                                                                name="thunderurl"><span id="down_thunderurl"></span></p>
+
+
+            <div class="row clearfix">
+				<div class="col-md-8 column">
+					<div class="row clearfix">
+                        {% for film in film_search_res %}
+                             <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img alt="300x200" src="{{ film.film_image_url }}" />
+                                    <div class="caption">
+                                        <h3>
+                                            {{ film.film_name }}
+                                        </h3>
+                                        <p>
+                                            {{ film.film_director }}
+                                            {{ film.film_actor }}
+                                            {{ film.film_type }}
+                                            {{ film.film_area }}
+                                        </p>
+                                        <p>
+                                            {{ film.film_desc }}
+                                        </p>
+                                        <p>
+
+                                                <a href="#">观看</a>
+
+                                                <form class="navbar-form navbar-left" role="search" action="{% url 'film_search:film_search_result' %}" method="post" autocomplete="off">
+
+
+
+                                                    <input hidden="hidden" name="film_page_url" value="{{ film.film_page_url }}" />
+                                                    <button class="btn" type="submit" >去下载</button>
+                                                    <input hidden="hidden"  name="film_name" value="{{ film.film_name }}" />
+                                                    {% csrf_token %}
+                                                </form>
+
+                                              <a   href="#">下载</a>
+                                        </p>
+                                    </div>
+                                </div>
+                             </div>
+                        {% endfor %}
+					</div>
+				</div>
+
+                <div class="col-md-4 column">
+                     <img src="{% static 'weibo/WechatIMG33.jpeg' %}" class="img-responsive" alt="Cinque Terre">
+                </div>
             </div>
-    {% endif %}
 
-    {% if error %}
-        <div class="col-md-6 column">
-                <h2>
-                    错误
-                </h2>
-                <p>
-                    <label>{{ error }}</label>
-                </p>
-                <p>
-                    {#				 <a class="btn" href="#">View details »</a>#}
-                </p>
-        </div>
-    {% endif %}
-        <div class="col-md-6 column">
-                <img src="{% static 'weibo/WechatIMG33.jpeg' %}" class="img-responsive" alt="Cinque Terre" width="400" height="600">
-        </div>
+
+
+
+
+
+         </div>
+
+
+
+
+
     </div>
 </div>
 </body>

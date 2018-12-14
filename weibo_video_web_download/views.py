@@ -21,7 +21,7 @@ class AnalyzeUrl(View):
         real_video_url = None
         url = request.POST.get("weibo_video_url", "")
         if "weibo.com/tv/v/" not in url:
-            return render(request, 'weibo/base.html', {"error": "不给我正确地址让我分析个啥?"})
+            return render(request, 'weibo/base.html', {"error": "检查复制过来的网址重试下吧！"})
         driver.get(url)
         pattern = re.compile(r'video_src=(.+?)video&amp;', re.DOTALL)  # 查找数字
         _num_temp = 0
