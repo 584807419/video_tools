@@ -107,12 +107,14 @@ class FilmDownload(View):
                       }
         for i in BeautifulSoup(web_page).find_all("li",class_="col-xs-12 input-group has-success thunder-deal"):
             dw_url = i.attrs.get("data-link")
-            if "baidu" in dw_url:
-                _temp_dict["baidu"].append(dw_url)
-            if "ed2k" in dw_url:
-                _temp_dict["ed2k"].append(dw_url.replace("www.ysshare.com","www.videotools.cn"))
-            if "magnet" in dw_url:
-                _temp_dict["magnet"].append(dw_url.replace("www.ysshare.com", "www.videotools.cn"))
-            if "ftp" in dw_url:
-                _temp_dict["ftp"].append(dw_url.replace("www.ysshare.com", "www.videotools.cn"))
+            if dw_url:
+                if "baidu" in dw_url:
+                    _temp_dict["baidu"].append(dw_url)
+                if "ed2k" in dw_url:
+                    _temp_dict["ed2k"].append(dw_url.replace("www.ysshare.com","www.videotools.cn"))
+                if "magnet" in dw_url:
+                    _temp_dict["magnet"].append(dw_url.replace("www.ysshare.com", "www.videotools.cn"))
+                if "ftp" in dw_url:
+                    _temp_dict["ftp"].append(dw_url.replace("www.ysshare.com", "www.videotools.cn"))
+        print(_temp_dict)
         return render(request, 'film/dw_info.html', {"temp_dict": _temp_dict})
