@@ -16,6 +16,8 @@ class FilmSearch(View):
         web_url = "https://www.ysshare.com"
         search_url = "https://www.ysshare.com/search/"
         film_name = request.POST.get("film_name", "")
+        if not film_name:
+            film_name = "毒液"
         url = search_url + quote(film_name)
         web_res = requests.get(url)
         web_page = web_res.content
