@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import sys
+from selenium import webdriver
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'h9ar#4m3*jukdbk#p9(2l^kyy@)od+r&wjwdftyw@u9d&pjfo)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
+DEBUG = True
+if "linux" in sys.platform:
+    DEBUG = False
+
 
 ALLOWED_HOSTS = ["*"]
 
@@ -122,12 +128,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 
-from selenium import webdriver
-import sys
+
 driver = None
 if sys.platform == "darwin": # mac上
     driver = webdriver.PhantomJS(executable_path='/Users/zhangkun/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs')
 if sys.platform == "win32": # windows上
     driver = None
-if sys.platform == "linux2": # ubuntu上
+if "linux" in sys.platform: # ubuntu上
     driver = webdriver.PhantomJS(executable_path='/home/zk/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')

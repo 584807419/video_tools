@@ -11,7 +11,7 @@ from django.views import View
 class IndexView(View):
     @staticmethod
     def get(request):
-        return render(request, 'weibo/base.html', {})
+        return render(request, 'weibo/index.html', {})
 
 
 class AnalyzeUrl(View):
@@ -21,7 +21,7 @@ class AnalyzeUrl(View):
         real_video_url = None
         url = request.POST.get("weibo_video_url", "")
         if "weibo.com/tv/v/" not in url:
-            return render(request, 'weibo/base.html', {"error": "检查复制过来的网址重试下吧！"})
+            return render(request, 'weibo/index.html', {"error": "检查复制过来的网址重试下吧！"})
         driver.get(url)
         pattern = re.compile(r'video_src=(.+?)video&amp;', re.DOTALL)  # 查找数字
         _num_temp = 0
@@ -29,12 +29,12 @@ class AnalyzeUrl(View):
             time.sleep(0.5)
             _num_temp+=1
             if _num_temp>20:
-                return render(request, 'weibo/base.html', {"error": "解析失败,超时,请重新复制链接重试,还不行,请联系张昆帮你"})
+                return render(request, 'weibo/index.html', {"error": "解析失败,超时,请重新复制链接重试,还不行,请联系张昆帮你"})
         find_video_src = pattern.findall(driver.page_source)
         if find_video_src:
             real_video_url = find_video_src[0]
         if real_video_url:
             real_url = "http:" + unquote(real_video_url) + "video"
-            return render(request, 'weibo/base.html', {"real_url": real_url})
+            return render(request, 'weibo/index.html', {"real_url": real_url})
         if not real_video_url:
-            return render(request, 'weibo/base.html', {"error": "解析失败,请重新复制链接重试,还不行,请联系张昆帮你"})
+            return render(request, 'weibo/index.html', {"error": "解析失败,请重新复制链接重试,还不行,请联系张昆帮你"})

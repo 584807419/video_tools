@@ -3,7 +3,9 @@
 {% load staticfiles %}
 <head>
     <meta charset="UTF-8">
+    {% block title %}
     <title>视频工具|微博视频下载</title>
+    {% endblock %}
     <style type="text/css">
         .p1{
         overflow: hidden;
@@ -13,7 +15,6 @@
         -webkit-box-orient: vertical;
         }
     </style>
-
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,8 +27,6 @@
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
-
-        
 
 
 
@@ -43,36 +42,36 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     					<ul class="nav navbar-nav">
-                    						<li>
+                    						<li class="active">
                     							 <a href="#">微博</a>
                     						</li>
-                    						<li>
-                    							 <a href="#">B站</a>
-                    						</li>
-                    						<li class="dropdown">
-                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他<strong class="caret"></strong></a>
-                    							<ul class="dropdown-menu">
-                    								<li>
-                    									 <a href="#">爱奇艺</a>
-                    								</li>
-                    								<li>
-                    									 <a href="#">优酷</a>
-                    								</li>
-                    								<li>
-                    									 <a href="#">腾讯视频</a>
-                    								</li>
-                    								<li class="divider">
-                    								</li>
-                    								<li>
-                    									 <a href="#">搜狐视频</a>
-                    								</li>
-                    								<li class="divider">
-                    								</li>
-                    								<li>
-                    									 <a href="#">乐视网</a>
-                    								</li>
-                    							</ul>
-                    						</li>
+{#                    						<li>#}
+{#                    							 <a href="#">B站</a>#}
+{#                    						</li>#}
+{#                    						<li class="dropdown">#}
+{#                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他<strong class="caret"></strong></a>#}
+{#                    							<ul class="dropdown-menu">#}
+{#                    								<li>#}
+{#                    									 <a href="#">爱奇艺</a>#}
+{#                    								</li>#}
+{#                    								<li>#}
+{#                    									 <a href="#">优酷</a>#}
+{#                    								</li>#}
+{#                    								<li>#}
+{#                    									 <a href="#">腾讯视频</a>#}
+{#                    								</li>#}
+{#                    								<li class="divider">#}
+{#                    								</li>#}
+{#                    								<li>#}
+{#                    									 <a href="#">搜狐视频</a>#}
+{#                    								</li>#}
+{#                    								<li class="divider">#}
+{#                    								</li>#}
+{#                    								<li>#}
+{#                    									 <a href="#">乐视网</a>#}
+{#                    								</li>#}
+{#                    							</ul>#}
+{#                    						</li>#}
                     					</ul>
                     					<form class="navbar-form navbar-left" role="search" action="{% url 'film_search:film_search_result' %}" method="post" autocomplete="off">
 
@@ -119,36 +118,14 @@
 
 
             <div class="row clearfix">
-				<div class="col-md-8 column">
-					<div class="row clearfix">
-                        {% for film in film_search_res %}
-                             <div class="col-md-4">
-                                <div class="thumbnail">
-                                     <form action="{% url 'film_search:film_download_result' %}" method="post" autocomplete="off">
-                                            <img alt="300x200" src="{{ film.film_image_url }}" />
-                                        <div class="caption">
-                                            <h3>
-                                                {{ film.film_name }}
-                                            </h3>
-                                            <p class="p1">
-                                                简介{{ film.film_desc }}
-                                            </p>
-                                                <input hidden="hidden" name="film_page_url" value="{{ film.film_page_url }}" />
-                                                <input hidden="hidden"  name="film_name" value="{{ film.film_name }}" />
-                                                <button type="submit" class="btn btn-primary">去下载</button>
-                                                {% csrf_token %}
-                                        </div>
+            {% block content_left8 %}
 
-                                    </form>
-                                </div>
-                             </div>
-                        {% endfor %}
-					</div>
-				</div>
-
+            {% endblock %}
+            {% block content_right4 %}
                 <div class="col-md-4 column">
-                     <img src="{% static 'weibo/WechatIMG33.jpeg' %}" class="img-responsive" alt="Cinque Terre">
+                 <img src="{% static 'weibo/WechatIMG33.jpeg' %}" class="img-responsive" alt="Cinque Terre">
                 </div>
+            {% endblock %}
             </div>
 
 

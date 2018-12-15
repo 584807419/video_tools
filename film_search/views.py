@@ -94,7 +94,7 @@ class FilmSearch(View):
                          }
             res.append(film_dict)
 
-        return render(request, 'film/base.html', {"film_search_res": res})
+        return render(request, 'film/film_search_result.html', {"film_search_res": res})
 
 
 class FilmDownload(View):
