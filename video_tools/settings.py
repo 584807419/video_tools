@@ -123,8 +123,11 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 
 from selenium import webdriver
-# driver = webdriver.PhantomJS(executable_path='/Users/zhangkun/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs')
-# mac上
+import sys
 driver = None
-# 服务器上
-driver = webdriver.PhantomJS(executable_path='/home/zk/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
+if sys.platform == "darwin": # mac上
+    driver = webdriver.PhantomJS(executable_path='/Users/zhangkun/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs')
+if sys.platform == "win32": # windows上
+    driver = None
+if sys.platform == "linux2": # ubuntu上
+    driver = webdriver.PhantomJS(executable_path='/home/zk/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
