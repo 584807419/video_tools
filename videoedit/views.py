@@ -15,7 +15,7 @@ class Ajj(View):
 
 class Vegas(View):
     def get(self, request):
-        return render(request, 'videoedit/index.html', {"software_queryset":VideoEditSoftware.objects.filter(name__icontains="爱剪辑")})
+        return render(request, 'videoedit/index.html', {"software_queryset":VideoEditSoftware.objects.filter(name__icontains="vegas")})
 
 class Pr(View):
     def get(self, request):
