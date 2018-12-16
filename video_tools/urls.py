@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import xadmin
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
+    path('xadmin/', xadmin.site.urls),
     path('', include(('weibo_video_web_download.urls','weibo_video_web_download'),namespace="weibo_video_web_download")),
     path('film_search/', include(('film_search.urls', 'film_search'), namespace="film_search")),
     path('videoedit/', include(('videoedit.urls','videoedit'),namespace="videoedit"))

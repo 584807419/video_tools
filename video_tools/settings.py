@@ -43,6 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'weibo_video_web_download',
+    'film_search',
+    'videoedit',
+    'DjangoUeditor',
+    'xadmin',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -80,10 +86,22 @@ WSGI_APPLICATION = 'video_tools.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "videotools",
+        'USER': 'zhangkun',
+        'PASSWORD': "zhangkunpw12306",
+        # 'HOST': "116.196.98.152"
+        'HOST': "154.8.219.34",
+        'PORT': "12306"
     }
 }
 
@@ -110,15 +128,25 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+#
+# TIME_ZONE = 'UTC'
+#
+# USE_I18N = True
+#
+# USE_L10N = True
+#
+# USE_TZ = True
 
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'zh-hans'
+
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -127,6 +155,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
+MEDIA_URL = '/media/' # 用户通过url来访问这个本地文件资源
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 保存文件的实际位置
 
 
 driver = None

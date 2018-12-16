@@ -55,28 +55,49 @@
                     							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">视频编辑软件<strong class="caret"></strong></a>
                     							<ul class="dropdown-menu">
                     								<li>
-                    									 <a href="#">爱剪辑</a>
+                    									 <a href="{% url 'videoedit:ajj' %}">爱剪辑</a>
                     								</li>
                     								<li>
-                    									 <a href="https://pan.baidu.com/s/1oF4XFGAsu0Ar_4HSTcqDyg">会声会影 (提取码: bpj3 )</a>
+                    									 <a href="{% url 'videoedit:hshy' %}">会声会影</a>
                     								</li>
                     								<li>
-                    									 <a href="#">Vegas</a>
+                    									 <a href="{% url 'videoedit:vegas' %}">Vegas</a>
                     								</li>
                     								<li class="divider">
                     								</li>
                     								<li>
-                    									 <a href="#">Adobe Premiere</a>
+                                                        <a href="{% url 'videoedit:pr' %}">Adobe Premiere</a>
                     								</li>
                     								<li class="divider">
                     								</li>
                     								<li>
-                    									 <a href="#">Adobe After Effects</a>
+                                                        <a href="{% url 'videoedit:ae' %}">Adobe After Effects</a>
                     								</li>
                     							</ul>
                     						</li>
                     						<li>
                     							 <a href="{% url "videoedit:index" %}" target="_blank">视频格式转换</a>
+                                                                    							<ul class="dropdown-menu">
+                    								<li>
+                    									 <a href="{% url 'videoedit:ajj' %}">格式工厂</a>
+                    								</li>
+                    								<li>
+                    									 <a href="{% url 'videoedit:hshy' %}">在线转换</a>
+                    								</li>
+
+                    							</ul>
+                    						</li>
+                    						<li>
+                    							 <a href="{% url "videoedit:index" %}" target="_blank">视频播放器</a>
+                                                                    							<ul class="dropdown-menu">
+                    								<li>
+                    									 <a href="{% url 'videoedit:ajj' %}">PotPlayer</a>
+                    								</li>
+                    								<li>
+                    									 <a href="{% url 'videoedit:hshy' %}">KmPlayer</a>
+                    								</li>
+
+                    							</ul>
                     						</li>
 {#                    						<li>#}
 {#                    							 <a href="#">B站</a>#}
@@ -115,22 +136,36 @@
                                             {% csrf_token %}
                     					</form>
                     					<ul class="nav navbar-nav navbar-right">
+                                            <li class="dropdown">
+                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多<strong class="caret"></strong></a>
+                    							<ul class="dropdown-menu">
+                    								<li>
+                    									 <a href="http://154.8.219.34:81/pythonnav/" target="_blank">学习</a>
+                    								</li>
+                    								<li>
+                    									 <a href="http://154.8.219.34:84" target="_blank">订饭</a>
+                    								</li>
+                    								<li>
+                    									 <a href="http://154.8.219.34:89/" target="_blank">上课</a>
+                    								</li>
 
-                    						<li>
-                    							 <a href="http://154.8.219.34:81/pythonnav/" target="_blank">学习</a>
+                    								</li>
+                    								<li>
+                    									 <a href="http://154.8.219.34:82" target="_blank">故事</a>
+                    								</li>
+                    								<li class="divider">
+                    								</li>
+                    								<li>
+                    									 <a href="https://www.devnav.win" target="_blank">工具导航</a>
+                    								</li>
+                                                    <li class="divider">
+                    								<li>
+                    									 <a href="/xadmin" target="_blank">管理后台</a>
+                    								</li>
+                    							</ul>
                     						</li>
-                    						<li>
-                    							 <a href="http://154.8.219.34:84" target="_blank">订饭</a>
-                    						</li>
-                    						<li>
-                    							 <a href="http://154.8.219.34:89/" target="_blank">上课</a>
-                    						</li>
-                    						<li>
-                    							 <a href="http://154.8.219.34:82" target="_blank">故事</a>
-                    						</li>
-                    						<li>
-                    							 <a href="https://www.devnav.win" target="_blank">工具导航</a>
-                    						</li>
+
+
 {#                    						<li class="dropdown">#}
 {#                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">个人信息<strong class="caret"></strong></a>#}
 {#                    							<ul class="dropdown-menu">#}
