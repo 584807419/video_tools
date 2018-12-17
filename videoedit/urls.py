@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from videoedit.views import Hshy, Ajj, Vegas, Pr, Ae
+from videoedit.views import Hshy, Ajj, Vegas, Pr, Ae, Qsy
 from django.views.generic import TemplateView
 #
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path('vegas/', Vegas.as_view(), name="vegas"),
     path('pr/', Pr.as_view(), name="pr"),
     path('ae/', Ae.as_view(), name="ae"),
+    path('qsy/', Qsy.as_view(), name="qsy"),
 ]

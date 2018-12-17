@@ -45,8 +45,33 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     					<ul class="nav navbar-nav">
-                    						<li class="active">
-                    							 <a href="#">微博</a>
+
+                                            <li class="dropdown active">
+                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">微博<strong class="caret"></strong></a>
+                    							<ul class="dropdown-menu">
+                                                    <li>
+                                                         <a href="#">B站</a>
+                                                    </li>
+                    								<li>
+                    									 <a href="#">爱奇艺</a>
+                    								</li>
+                    								<li>
+                    									 <a href="#">优酷</a>
+                    								</li>
+                    								<li>
+                    									 <a href="#">腾讯视频</a>
+                    								</li>
+                    								<li class="divider">
+                    								</li>
+                    								<li>
+                    									 <a href="#">搜狐视频</a>
+                    								</li>
+                    								<li class="divider">
+                    								</li>
+                    								<li>
+                    									 <a href="#">乐视网</a>
+                    								</li>
+                    							</ul>
                     						</li>
 {#                    						<li>#}
 {#                    							 <a href="{% url "videoedit:index" %}" target="_blank">视频编辑软件</a>#}
@@ -55,77 +80,79 @@
                     							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">视频编辑软件<strong class="caret"></strong></a>
                     							<ul class="dropdown-menu">
                     								<li>
-                    									 <a href="{% url 'videoedit:ajj' %}">爱剪辑</a>
+                    									 <a href="{% url 'videoedit:ajj' %}" target="_blank">爱剪辑</a>
                     								</li>
                     								<li>
-                    									 <a href="{% url 'videoedit:hshy' %}">会声会影</a>
+                    									 <a href="{% url 'videoedit:hshy' %}" target="_blank">会声会影</a>
+                    								</li>
+                                                    <li class="divider">
+                    								<li>
+                    									 <a href="{% url 'videoedit:vegas' %}" target="_blank">Vegas</a>
+                    								</li>
                     								</li>
                     								<li>
-                    									 <a href="{% url 'videoedit:vegas' %}">Vegas</a>
+                                                        <a href="{% url 'videoedit:pr' %}" target="_blank">Adobe Premiere</a>
                     								</li>
-                    								<li class="divider">
                     								</li>
-{#                    								<li>#}
-{#                                                        <a href="{% url 'videoedit:pr' %}">Adobe Premiere</a>#}
-{#                    								</li>#}
-{#                    								<li class="divider">#}
-{#                    								</li>#}
-{#                    								<li>#}
-{#                                                        <a href="{% url 'videoedit:ae' %}">Adobe After Effects</a>#}
-{#                    								</li>#}
+                    								<li>
+                                                        <a href="{% url 'videoedit:ae' %}" target="_blank">Adobe After Effects</a>
+                                                    <li class="divider">
+                    								</li>
+                                                    <li>
+                    									 <a href="{% url 'videoedit:qsy' %}" target="_blank">去水印</a>
+                    								</li>
+
+                                                    <li>
+                    									 <a href="https://pan.baidu.com/s/1jHPBPUu" target="_blank">视频无损合并</a>
+                    								</li>
                     							</ul>
                     						</li>
-{#                    						<li>#}
-{#                    							 <a href="{% url "videoedit:index" %}" target="_blank">视频格式转换(todo)</a>#}
-{#                                                                    							<ul class="dropdown-menu">#}
-{#                    								<li>#}
-{#                    									 <a href="{% url 'videoedit:ajj' %}">格式工厂</a>#}
-{#                    								</li>#}
-{#                    								<li>#}
-{#                    									 <a href="{% url 'videoedit:hshy' %}">在线转换</a>#}
-{#                    								</li>#}
-{##}
-{#                    							</ul>#}
-{#                    						</li>#}
-{#                    						<li>#}
-{#                    							 <a href="" target="_blank">视频播放器(todo)</a>#}
-{#                                                                    							<ul class="dropdown-menu">#}
-{#                    								<li>#}
-{#                    									 <a href="http://potplayer.daum.net/?lang=zh_CN">PotPlayer</a>#}
-{#                    								</li>#}
-{#                    								<li>#}
-{#                    									 <a href="{% url 'videoedit:hshy' %}">KmPlayer</a>#}
-{#                    								</li>#}
-{##}
-{#                    							</ul>#}
-{#                    						</li>#}
-{#                    						<li>#}
-{#                    							 <a href="#">B站</a>#}
-{#                    						</li>#}
-{#                    						<li class="dropdown">#}
-{#                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他<strong class="caret"></strong></a>#}
-{#                    							<ul class="dropdown-menu">#}
-{#                    								<li>#}
-{#                    									 <a href="#">爱奇艺</a>#}
-{#                    								</li>#}
-{#                    								<li>#}
-{#                    									 <a href="#">优酷</a>#}
-{#                    								</li>#}
-{#                    								<li>#}
-{#                    									 <a href="#">腾讯视频</a>#}
-{#                    								</li>#}
-{#                    								<li class="divider">#}
-{#                    								</li>#}
-{#                    								<li>#}
-{#                    									 <a href="#">搜狐视频</a>#}
-{#                    								</li>#}
-{#                    								<li class="divider">#}
-{#                    								</li>#}
-{#                    								<li>#}
-{#                    									 <a href="#">乐视网</a>#}
-{#                    								</li>#}
-{#                    							</ul>#}
-{#                    						</li>#}
+                    						<li>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">格式转换<strong class="caret"></strong></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                             <a href="http://www.pcgeshi.com/" target="_blank">格式工厂</a>
+                                                        </li>
+                                                        <li>
+                                                             <a href="https://www.apowersoft.cn/free-online-video-converter" target="_blank">Apowersoft</a>
+                                                        </li>
+                                                        <li>
+                                                             <a href="https://convertio.co/zh/" target="_blank">Convertio</a>
+                                                        </li>
+
+                                                        <li>
+                                                             <a href="https://smallpdf.com/cn" target="_blank">Smallpdf</a>
+                                                        </li>
+
+                                                    </ul>
+                    						</li>
+                    						<li>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">播放器<strong class="caret"></strong></a>
+                                                                    							<ul class="dropdown-menu">
+                    								<li>
+                    									 <a href="http://potplayer.daum.net/?lang=zh_CN" target="_blank">PotPlayer</a>
+
+                    								</li>
+
+                    							</ul>
+                    						</li>
+                    						<li>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">下载<strong class="caret"></strong></a>
+                                                                    							<ul class="dropdown-menu">
+                    								<li>
+                    									 <a href="https://github.com/proxyee-down-org/proxyee-down/wiki/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B" target="_blank">proxyee-down多线程下载</a>
+
+                    								</li>
+
+                                                    <li>
+                                                         <a href="https://www.videvo.net/" target="_blank">素材下载</a>
+                                                    </li>
+
+
+                    							</ul>
+                    						</li>
+
+
                     					</ul>
                     					<form class="navbar-form navbar-left" role="search" action="{% url 'film_search:film_search_result' %}" method="post" autocomplete="off">
 
