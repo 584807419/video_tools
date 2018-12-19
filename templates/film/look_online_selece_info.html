@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+    {% block title %}
+    <title>影片下载地址</title>
+    {% endblock %}
+{% block content_left8 %}
+				<div class="col-md-8 column">
+                    <div class="list-group">
+                        {% for film_online_dict in lookpage_temp %}
+{#                         <a href="#" class="list-group-item active">{{ film_online_dict }}</a>#}
+                                {% for key, value in film_online_dict.items %}
+
+    {#                                {% for sin_url_info in bvalue %}#}
+                                    <div class="list-group-item">
+                                        <a class="p1" href="{{ value }}">{{ key }}</a>
+                                    </div>
+    {#                                {% endfor %}#}
+                                {% endfor %}
+                        {% endfor %}
+                    </div>
+				</div>
+{% endblock %}
+

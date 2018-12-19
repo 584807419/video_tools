@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
     {% block title %}
-    <title>影片搜索结果</title>
+        <title xmlns:float="http://www.w3.org/1999/xhtml">影片搜索结果</title>
     {% endblock %}
 {% block content_left8 %}
 				<div class="col-md-8 column">
@@ -9,7 +9,8 @@
                         {% for film in film_search_res %}
                              <div class="col-md-4">
                                 <div class="thumbnail">
-                                     <form action="{% url 'film_search:film_download_result' %}" method="post" autocomplete="off">
+
+
                                             <img alt="300x200" src="{{ film.film_image_url }}" />
                                         <div class="caption">
                                             <h3>
@@ -18,13 +19,30 @@
                                             <p class="p1">
                                                 简介{{ film.film_desc }}
                                             </p>
-                                                <input hidden="hidden" name="film_page_url" value="{{ film.film_page_url }}" />
-                                                <input hidden="hidden"  name="film_name" value="{{ film.film_name }}" />
-                                                <button type="submit" class="btn btn-primary">去下载</button>
-                                                {% csrf_token %}
+
+
+                                                 <form action="{% url 'film_search:film_download_result' %}" method="post" autocomplete="off">
+
+                                                            <input hidden="hidden" name="film_page_url" value="{{ film.film_page_url }}" />
+                                                            <input hidden="hidden"  name="film_name" value="{{ film.film_name }}" />
+                                                            <button type="submit" float:left class="btn btn-primary">去下载</button>
+                                                            {% csrf_token %}
+                                                </form>
+
+
+
+                                                 <form action="{% url 'film_search:film_lookup_result' %}" method="post" autocomplete="off">
+
+                                                            <input hidden="hidden" name="film_page_url" value="{{ film.film_page_url }}" />
+                                                            <input hidden="hidden"  name="film_name" value="{{ film.film_name }}" />
+                                                            <button type="submit" float:right class="btn btn-primary">在线看</button>
+                                                            {% csrf_token %}
+                                                </form>
+
+
                                         </div>
 
-                                    </form>
+
                                 </div>
                              </div>
                         {% endfor %}

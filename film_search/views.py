@@ -119,3 +119,19 @@ class FilmDownload(View):
                 if "ftp" in dw_url:
                     _temp_dict["ftp"].append(dw_url.replace("www.ysshare.com", "www.videotools.cn"))
         return render(request, 'film/dw_info.html', {"temp_dict": _temp_dict})
+
+
+class FilmOnlineLookup(View):
+    def post(self,request):
+        film_name = request.POST.get("film_name")
+        web_res= requests.get(request.POST.get("film_page_url"))
+        web_page = web_res.content
+
+
+        lookpage_temp = []
+        for i in BeautifulSoup(web_page).find_all("ul", class_="play-list play-list-long"):
+            lookpage_url = "https://www.ysshare.com"+i.contents[1].contents[0].attrs.get("href")
+            lookpage_text = i.text
+            lookpage_dict={lookpage_text:lookpage_url}
+            lookpage_temp.append(lookpage_dict)
+        return render(request, 'film/look_online_selece_info.html', {"lookpage_temp": lookpage_temp})
