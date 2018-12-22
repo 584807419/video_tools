@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
     {% block title %}
-    <title>影片下载地址</title>
+    <title>影片观看地址</title>
     {% endblock %}
 {% block content_left8 %}
 				<div class="col-md-8 column">
@@ -12,7 +12,13 @@
 
     {#                                {% for sin_url_info in bvalue %}#}
                                     <div class="list-group-item">
-                                        <a class="p1" href="{{ value }}">{{ key }}</a>
+
+                                                 <form action="{% url 'film_search:film_onlinelook_url' %}" method="post" autocomplete="off">
+
+                                                            <input hidden="hidden"  name="film_onlinelook_url" value="{{ value }}" />
+                                                            <button type="submit" class="btn btn-primary">{{ key }}</button>
+                                                            {% csrf_token %}
+                                                </form>
                                     </div>
     {#                                {% endfor %}#}
                                 {% endfor %}

@@ -97,11 +97,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "videotools",
-        'USER': 'zhangkun',
-        'PASSWORD': "zhangkunpw12306",
+        'USER': 'root',
+        'PASSWORD': "dockeroffmysql",
         # 'HOST': "116.196.98.152"
         'HOST': "154.8.219.34",
-        'PORT': "12306"
+        'PORT': "12308"
     }
 }
 

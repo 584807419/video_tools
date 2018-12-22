@@ -135,3 +135,20 @@ class FilmOnlineLookup(View):
             lookpage_dict={lookpage_text:lookpage_url}
             lookpage_temp.append(lookpage_dict)
         return render(request, 'film/look_online_selece_info.html', {"lookpage_temp": lookpage_temp})
+
+class FilmOnlineLookupUrl(View):
+    def post(self,request):
+        url= request.POST.get("film_onlinelook_url")
+        driver.get(url)
+        pattern = re.compile(r'iframe src="(.+?)" frameborder', re.DOTALL)  # 查找数字
+        _num_temp = 0
+        while "iframe" not in driver.page_source:
+            time.sleep(0.5)
+            _num_temp += 1
+            if _num_temp > 20:
+                return render(request, 'weibo/index.html', {"error": "解析失败,超时,请重新复制链接重试,还不行,请联系张昆帮你"})
+        find_video_src = pattern.findall(driver.page_source)
+        if find_video_src:
+            return render(request, 'film/look_online_look_info.html', {"real_vodeo_online_url": find_video_src[0]})
+        else:
+            return render(request, 'weibo/look_online_look_info.html', {"error": "无法找到有效的链接,请联系站长帮你解决"})
