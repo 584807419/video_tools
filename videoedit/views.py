@@ -29,3 +29,7 @@ class Qsy(View):
     def get(self, request):
         return render(request, 'videoedit/index.html', {"software_queryset":VideoEditSoftware.objects.filter(name__icontains="水印")})
 
+class Qjj(View):
+    def get(self, request):
+        return render(request, 'videoedit/index.html', {"software_queryset":VideoEditSoftware.objects.filter(name__icontains="快剪辑")})
+
