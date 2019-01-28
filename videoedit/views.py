@@ -33,3 +33,8 @@ class Qjj(View):
     def get(self, request):
         return render(request, 'videoedit/index.html', {"software_queryset":VideoEditSoftware.objects.filter(name__icontains="快剪辑")})
 
+
+class Dy(View):
+    def get(self, request):
+        return render(request, 'douyin/douyinbluev.html', {"software_queryset":VideoEditSoftware.objects.filter(name__icontains="快剪辑")})
+
