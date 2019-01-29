@@ -161,7 +161,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 保存文件的实际位置
 
 driver = None
 if sys.platform == "darwin": # mac上
-    driver = webdriver.PhantomJS(executable_path='/Users/zhangkun/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs')
+    driver = webdriver.PhantomJS(executable_path='/Users/zhangkun/Documents/GitHub/video_tools/phantomjs-2.1.1-macosx/bin/phantomjs')
 if sys.platform == "win32": # windows上
     driver = None
 if "linux" in sys.platform: # ubuntu上
