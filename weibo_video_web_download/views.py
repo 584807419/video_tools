@@ -6,13 +6,32 @@ from django.shortcuts import render
 from video_tools.settings import driver
 # Create your views here.
 from django.views import View
+from django.utils.decorators import method_decorator
+from common_utils.log_tools.log_decorator import func_var_record
 
+# 怎么调用日志工具
+# @func_var_record
+# def functest(request):
+#     ddd = 323232
+#     return ddd
+#
+# @func_var_record
+# def functest1(**kwargs):
+#     ddd = 3232324444
+#     return ddd, locals()
+#
+# class IndexView(View):
+#     @method_decorator(func_var_record)
+#     def get(self, request):
+#         a = 3
+#         b = 3
+#         dasd = functest(request)
+#         dasd1 = functest1(request=request)
+#         return render(request, 'weibo/index.html', {}), locals()
 
 class IndexView(View):
-    @staticmethod
-    def get(request):
+    def get(self, request):
         return render(request, 'weibo/index.html', {})
-
 
 class AnalyzeUrl(View):
     """https://weibo.com/tv/v/H6QyX4qVM?fid=1034:4316319986740109"""
