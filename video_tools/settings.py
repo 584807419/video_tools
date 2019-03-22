@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'DjangoUeditor',
     'xadmin',
     'crispy_forms',
+    'middleware',
+    'common_utils'
 ]
 
 MIDDLEWARE = [
@@ -62,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'middleware.session_process.add_cost_time_log_mark.RecordUrlCostTimeMiddleware'
 ]
 
 ROOT_URLCONF = 'video_tools.urls'
