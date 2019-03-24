@@ -9,11 +9,13 @@ from django.views import View
 from django.utils.decorators import method_decorator
 from common_utils.log_tools.log_decorator import func_var_record
 
+
 # 怎么调用日志工具
 # @func_var_record
 # def functest(request):
 #     ddd = 323232
-#     return ddd
+#     ddd3 = 323232
+#     return ddd,ddd3,locals()
 #
 # @func_var_record
 # def functest1(**kwargs):
