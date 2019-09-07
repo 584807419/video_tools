@@ -1,18 +1,28 @@
 import re
+import sys
 import time
 import requests
 from urllib.parse import unquote, quote
 from bs4 import BeautifulSoup
 
 from django.shortcuts import render
-from video_tools.settings import driver
+from selenium import webdriver
 # Create your views here.
 from django.views import View
+
+
 
 
 class FilmSearch(View):
     @staticmethod
     def post(request):
+        if sys.platform == "darwin":  # mac上
+            driver = webdriver.PhantomJS(
+                executable_path='/Users/zhangkun/Documents/GitHub/video_tools/phantomjs-2.1.1-macosx/bin/phantomjs')
+        if sys.platform == "win32":  # windows上
+            driver = None
+        if "linux" in sys.platform:  # ubuntu上
+            driver = webdriver.PhantomJS(executable_path='/home/zk/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
         web_url = "https://www.ysshare.com"
         search_url = "https://www.ysshare.com/search/"
         film_name = request.POST.get("film_name", "")
@@ -93,6 +103,7 @@ class FilmSearch(View):
                          "film_page_url": film_page_url,
                          }
             res.append(film_dict)
+        driver.quit()
 
         return render(request, 'film/film_search_result.html', {"film_search_res": res})
 

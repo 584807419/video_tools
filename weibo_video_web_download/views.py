@@ -1,9 +1,10 @@
 import re
+import sys
 import time
 from urllib.parse import unquote
 
 from django.shortcuts import render
-from video_tools.settings import driver
+from selenium import webdriver
 # Create your views here.
 from django.views import View
 from django.utils.decorators import method_decorator
@@ -43,6 +44,13 @@ class AnalyzeUrl(View):
 
     @staticmethod
     def post(request):
+        if sys.platform == "darwin":  # mac上
+            driver = webdriver.PhantomJS(
+                executable_path='/Users/zhangkun/Documents/GitHub/video_tools/phantomjs-2.1.1-macosx/bin/phantomjs')
+        if sys.platform == "win32":  # windows上
+            driver = None
+        if "linux" in sys.platform:  # ubuntu上
+            driver = webdriver.PhantomJS(executable_path='/home/zk/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
         real_video_url = None
         url = request.POST.get("weibo_video_url", "")
         if "weibo.com/tv/v/" not in url:
@@ -56,6 +64,9 @@ class AnalyzeUrl(View):
             if _num_temp > 20:
                 return render(request, 'weibo/index.html', {"error": "解析失败,超时,请重新复制链接重试,还不行,请联系张昆帮你"})
         find_video_src = pattern.findall(driver.page_source)
+
+        driver.quit()
+        
         if find_video_src:
             real_video_url = find_video_src[0]
         if real_video_url:

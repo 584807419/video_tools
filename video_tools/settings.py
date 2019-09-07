@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import sys
 import time
-from selenium import webdriver
+
 import logging
 # import logging.config
 
@@ -165,13 +165,7 @@ MEDIA_URL = '/media/' # 用户通过url来访问这个本地文件资源
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 保存文件的实际位置
 
 
-driver = None
-if sys.platform == "darwin": # mac上
-    driver = webdriver.PhantomJS(executable_path='/Users/zhangkun/Documents/GitHub/video_tools/phantomjs-2.1.1-macosx/bin/phantomjs')
-if sys.platform == "win32": # windows上
-    driver = None
-if "linux" in sys.platform: # ubuntu上
-    driver = webdriver.PhantomJS(executable_path='/home/zk/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
+
 
 
 # 日志配置
