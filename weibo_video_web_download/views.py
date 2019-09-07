@@ -8,6 +8,7 @@ from video_tools.settings import driver
 from django.views import View
 from django.utils.decorators import method_decorator
 from common_utils.log_tools.log_decorator import func_var_record
+from videoedit.models import VideoEditSoftware
 
 
 # 怎么调用日志工具
@@ -33,10 +34,13 @@ from common_utils.log_tools.log_decorator import func_var_record
 
 class IndexView(View):
     def get(self, request):
-        return render(request, 'weibo/index.html', {})
+        return render(request, 'weibo/index.html',
+                      {'videoedit_software_info': VideoEditSoftware.objects.all().order_by('name')})
+
 
 class AnalyzeUrl(View):
     """https://weibo.com/tv/v/H6QyX4qVM?fid=1034:4316319986740109"""
+
     @staticmethod
     def post(request):
         real_video_url = None
@@ -48,8 +52,8 @@ class AnalyzeUrl(View):
         _num_temp = 0
         while "video_src=" not in driver.page_source:
             time.sleep(0.5)
-            _num_temp+=1
-            if _num_temp>20:
+            _num_temp += 1
+            if _num_temp > 20:
                 return render(request, 'weibo/index.html', {"error": "解析失败,超时,请重新复制链接重试,还不行,请联系张昆帮你"})
         find_video_src = pattern.findall(driver.page_source)
         if find_video_src:

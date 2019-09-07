@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     {% block title %}
-    <title>视频工具|微博视频下载</title>
+        <title>视频工具|微博视频下载</title>
     {% endblock %}
 
     {% block css %}
-    <style type="text/css">
-        .p1{
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <style type="text/css">
+            .p1 {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     {% endblock %}
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -32,8 +32,6 @@
         <div class="col-md-12 column">
 
 
-
-
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -44,205 +42,166 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    					<ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
 
-                                            <li class="dropdown active">
-                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">微博<strong class="caret"></strong></a>
-                    							<ul class="dropdown-menu">
-                                                    <li>
-                                                         <a href="#">B站(暂未上线)</a>
-                                                    </li>
-                    								<li>
-                    									 <a href="#">爱奇艺(暂未上线)</a>
-                    								</li>
-                    								<li>
-                    									 <a href="#">优酷(暂未上线)</a>
-                    								</li>
-                    								<li>
-                    									 <a href="#">腾讯视频(暂未上线)</a>
-                    								</li>
-                    								<li class="divider">
-                    								</li>
-                    								<li>
-                    									 <a href="#">搜狐视频(暂未上线)</a>
-                    								</li>
-                    								<li class="divider">
-                    								</li>
-                    								<li>
-                    									 <a href="#">乐视网(暂未上线)</a>
-                    								</li>
-                    							</ul>
-                    						</li>
-                    						<li>
-                    							 <a href="{% url "videoedit:douyin" %}" target="_blank">抖音</a>
-                    						</li>
-                    						<li class="dropdown">
-                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">视频编辑软件<strong class="caret"></strong></a>
-                    							<ul class="dropdown-menu">
-                    								<li>
-                    									 <a href="{% url 'videoedit:ajj' %}" target="_blank">爱剪辑</a>
-                    								</li>
-                    								<li>
-                    									 <a href="{% url 'videoedit:hshy' %}" target="_blank">会声会影</a>
-                    								</li>
-                                                    <li class="divider">
-                    								<li>
-                    									 <a href="{% url 'videoedit:vegas' %}" target="_blank">Vegas</a>
-                    								</li>
-                    								</li>
-                    								<li>
-                                                        <a href="{% url 'videoedit:pr' %}" target="_blank">Adobe Premiere</a>
-                    								</li>
-                    								</li>
-                    								<li>
-                                                        <a href="{% url 'videoedit:ae' %}" target="_blank">Adobe After Effects</a>
-                                                    <li class="divider">
-                    								</li>
-                                                    <li>
-                    									 <a href="{% url 'videoedit:qsy' %}" target="_blank">去水印</a>
-                    								</li>
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">微博<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="https://www.videosolo.com/zh-CN/online-video-downloader/">videosolo</a>
+                                </li>
+                                <li>
+                                    <a href="https://zh.savefrom.net">savefrom</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.parsevideo.com">parsevideo(墙外)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">视频编辑软件<strong
+                                    class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                {% for vi in videoedit_software_info %}
+                                    <li>
+                                        <a href="{% url 'videoedit:get_software_info' %}?pk={{ vi.pk }}"
+                                           target="_blank">{{ vi.name }}</a>
+                                    </li>
+                                {% endfor %}
+                                <li>
+                                    <a href="https://pan.baidu.com/s/1jHPBPUu" target="_blank">视频无损合并</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">格式与编码<strong
+                                    class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="http://www.pcgeshi.com/" target="_blank">格式工厂</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.apowersoft.cn/free-online-video-converter" target="_blank">Apowersoft</a>
+                                </li>
+                                <li>
+                                    <a href="https://convertio.co/zh/" target="_blank">Convertio</a>
+                                </li>
 
-                                                    <li>
-                                                        <a href="{% url 'videoedit:qjj' %}" target="_blank">快剪辑</a>
-                    								</li>
+                                <li>
+                                    <a href="https://smallpdf.com/cn" target="_blank">Smallpdf</a>
+                                </li>
 
-                                                    <li>
-                    									 <a href="https://pan.baidu.com/s/1jHPBPUu" target="_blank">视频无损合并</a>
-                    								</li>
-                    							</ul>
-                    						</li>
-                    						<li>
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">格式转换<strong class="caret"></strong></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li>
-                                                             <a href="http://www.pcgeshi.com/" target="_blank">格式工厂</a>
-                                                        </li>
-                                                        <li>
-                                                             <a href="https://www.apowersoft.cn/free-online-video-converter" target="_blank">Apowersoft</a>
-                                                        </li>
-                                                        <li>
-                                                             <a href="https://convertio.co/zh/" target="_blank">Convertio</a>
-                                                        </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">播放器<strong
+                                    class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="http://potplayer.daum.net/?lang=zh_CN" target="_blank">PotPlayer</a>
+                                    <a href="https://iina.io" target="_blank">IINA</a>
 
-                                                        <li>
-                                                             <a href="https://smallpdf.com/cn" target="_blank">Smallpdf</a>
-                                                        </li>
+                                </li>
 
-                                                    </ul>
-                    						</li>
-                    						<li>
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">播放器<strong class="caret"></strong></a>
-                                                                    							<ul class="dropdown-menu">
-                    								<li>
-                    									 <a href="http://potplayer.daum.net/?lang=zh_CN" target="_blank">PotPlayer</a>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">下载<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="https://github.com/proxyee-down-org/proxyee-down/wiki/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"
+                                       target="_blank">proxyee-down多线程下载</a>
 
-                    								</li>
+                                </li>
 
-                    							</ul>
-                    						</li>
-                    						<li>
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">下载<strong class="caret"></strong></a>
-                                                                    							<ul class="dropdown-menu">
-                    								<li>
-                    									 <a href="https://github.com/proxyee-down-org/proxyee-down/wiki/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B" target="_blank">proxyee-down多线程下载</a>
-
-                    								</li>
-
-                                                    <li>
-                                                         <a href="https://www.videvo.net/" target="_blank">素材下载</a>
-                                                    </li>
+                                <li>
+                                    <a href="https://www.videvo.net/" target="_blank">素材下载</a>
+                                </li>
 
 
-                    							</ul>
-                    						</li>
+                            </ul>
+                        </li>
 
 
-                    					</ul>
-                    					<form class="navbar-form navbar-left" role="search" action="{% url 'film_search:film_search_result' %}" method="post" autocomplete="off">
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search"
+                          action="{% url 'film_search:film_search_result' %}" method="post" autocomplete="off">
 
-                    						<div class="form-group">
-                                                <input name="film_name" class="form-control" placeholder="影片名字" />
-                    						</div>
-                                            <button type="submit" class="btn btn-default">找电影</button>
-                                            {% csrf_token %}
-                    					</form>
-                    					<ul class="nav navbar-nav navbar-right">
-                                            <li class="dropdown">
-                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多<strong class="caret"></strong></a>
-                    							<ul class="dropdown-menu">
-                    								<li>
-                    									 <a href="http://154.8.219.34:81/pythonnav/" target="_blank">学习</a>
-                    								</li>
-                    								<li>
-                    									 <a href="http://154.8.219.34:89/" target="_blank">上课</a>
-                    								</li>
-
-                    								</li>
-                    								<li>
-                    									 <a href="http://154.8.219.34:82" target="_blank">故事</a>
-                    								</li>
-                    								<li class="divider">
-                    								</li>
-                    								<li>
-                    									 <a href="https://www.devnav.win" target="_blank">工具导航</a>
-                    								</li>
-                                                    <li class="divider">
-                    								<li>
-                    									 <a href="/xadmin" target="_blank">管理后台</a>
-                    								</li>
-                    							</ul>
-                    						</li>
+                        <div class="form-group">
+                            <input name="film_name" class="form-control" placeholder="影片名字"/>
+                        </div>
+                        <button type="submit" class="btn btn-default">找电影</button>
+                        {% csrf_token %}
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">找到我<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="https://space.bilibili.com/393209961" target="_blank">bilibili</a>
+                                </li>                                <li>
+                                    <a href="https://www.ixigua.com/home/86149248724/" target="_blank">西瓜视频</a>
+                                </li>
 
 
-{#                    						<li class="dropdown">#}
-{#                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">个人信息<strong class="caret"></strong></a>#}
-{#                    							<ul class="dropdown-menu">#}
-{#                    								<li>#}
-{#                    									 <a href="#">Action</a>#}
-{#                    								</li>#}
-{#                    								<li>#}
-{#                    									 <a href="#">Another action</a>#}
-{#                    								</li>#}
-{#                    								<li>#}
-{#                    									 <a href="#">Something else here</a>#}
-{#                    								</li>#}
-{#                    								<li class="divider">#}
-{#                    								</li>#}
-{#                    								<li>#}
-{#                    									 <a href="#">Separated link</a>#}
-{#                    								</li>#}
-{#                    							</ul>#}
-{#                    						</li>#}
-                    					</ul>
-                    				</div>
+                                </li>
+                                <li>
+                                    <a href="https://www.acfun.cn/u/19593112.aspx" target="_blank">acfun</a>
+                                </li>
+                                <li>
+                                    <a href="http://154.8.219.34:89/" target="_blank">上课</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="https://www.devnav.win" target="_blank">工具导航</a>
+                                </li>
+                                <li class="divider">
+                                <li>
+                                    <a href="/xadmin" target="_blank">管理后台</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        {#                    						<li class="dropdown">#}
+                        {#                    							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">个人信息<strong class="caret"></strong></a>#}
+                        {#                    							<ul class="dropdown-menu">#}
+                        {#                    								<li>#}
+                        {#                    									 <a href="#">Action</a>#}
+                        {#                    								</li>#}
+                        {#                    								<li>#}
+                        {#                    									 <a href="#">Another action</a>#}
+                        {#                    								</li>#}
+                        {#                    								<li>#}
+                        {#                    									 <a href="#">Something else here</a>#}
+                        {#                    								</li>#}
+                        {#                    								<li class="divider">#}
+                        {#                    								</li>#}
+                        {#                    								<li>#}
+                        {#                    									 <a href="#">Separated link</a>#}
+                        {#                    								</li>#}
+                        {#                    							</ul>#}
+                        {#                    						</li>#}
+                    </ul>
+                </div>
 
             </nav>
 
 
-
-
-
-
             <div class="row clearfix">
-            {% block content_left8 %}
+                {% block content_left8 %}
 
-            {% endblock %}
-            {% block content_right4 %}
-                <div class="col-md-4 column">
-                 <img src="{% static 'weibo/WechatIMG33.jpeg' %}" class="img-responsive" alt="Cinque Terre">
-                </div>
-            {% endblock %}
+                {% endblock %}
+                {% block content_right4 %}
+                    <div class="col-md-4 column">
+                        <img src="{% static 'weibo/WechatIMG33.jpeg' %}" class="img-responsive" alt="Cinque Terre">
+                    </div>
+                {% endblock %}
             </div>
 
 
-
-
-
-
-         </div>
-
-
-
+        </div>
 
 
     </div>

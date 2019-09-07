@@ -1,6 +1,5 @@
 import sys
 from functools import update_wrapper
-from future.utils import iteritems
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.base import ModelBase
@@ -321,7 +320,7 @@ class AdminSite(object):
         ]
 
         # Add in each model's views.
-        for model, admin_class in iteritems(self._registry):
+        for model, admin_class in self._registry.items():
             view_urls = [
                 re_path(
                     _path,

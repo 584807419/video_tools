@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import sys
 import time
-from selenium import webdriver
+# from selenium import webdriver
 import logging
 # import logging.config
 
